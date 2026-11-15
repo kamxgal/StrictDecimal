@@ -79,7 +79,7 @@ struct select_operating_type
 #if defined(__GNUC__) || defined(__clang__)
     // If GCC or Clang, use 128-bit for intermediate multiplication
     // (Be mindful: MSVC doesn't support __int128).
-    using type = __int128;
+    __extension__ typedef __int128 type;
 #else
     // Otherwise, just pick the larger of the two underlying types
     using type = std::conditional_t<
